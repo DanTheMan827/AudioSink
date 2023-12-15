@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioSink", "AudioSink\AudioSink.csproj", "{0FD1B0F8-8C59-4BF1-AA22-EBB6C5F35961}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AudioSink", "AudioSink\AudioSink.csproj", "{0FD1B0F8-8C59-4BF1-AA22-EBB6C5F35961}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioSink.Services", "AudioSink.Services\AudioSink.Services.csproj", "{D4DF9D62-C7EB-4D28-8C60-D3972078B118}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AudioSink.Services", "AudioSink.Services\AudioSink.Services.csproj", "{D4DF9D62-C7EB-4D28-8C60-D3972078B118}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
