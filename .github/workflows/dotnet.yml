@@ -1,0 +1,43 @@
+name: .NET
+
+on:
+  workflow_dispatch:
+  push:
+    branches: '*'
+  pull_request:
+    branches: '*'
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        submodules: true
+    
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: setup-msbuild
+      uses: microsoft/setup-msbuild@v1
+    
+    - name: Build debug
+      run: msbuild AudioSink.sln /t:Build /p:Configuration=Debug
+    
+    - name: Build release
+      run: msbuild AudioSink.sln /t:Build /p:Configuration=Release
+    
+    - name: Publish debug build artifacts
+      uses: actions/upload-artifact@v2.2.2
+      with:
+        name: AudioSink-Debug
+        path: AudioSink/bin/Debug/net481
+    
+    - name: Publish release build artifacts
+      uses: actions/upload-artifact@v2.2.2
+      with:
+        name: AudioSink-Release
+        path: AudioSink/bin/Release/net481
