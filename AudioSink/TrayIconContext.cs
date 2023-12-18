@@ -18,6 +18,10 @@ namespace AudioSink
         private NotifyIcon icon;
         private ContextMenuStrip menu = new ContextMenuStrip();
         private ToolStripMenuItem exitMenu = new ToolStripMenuItem("Exit");
+        private ToolStripMenuItem autoStartMenu = new ToolStripMenuItem("Start at logon")
+        {
+            Checked = AutoStartManager.IsAutoStartEnabled
+        };
         private ToolStripMenuItem reconnectToggleMenu = new ToolStripMenuItem("Reconnect at launch")
         {
             Checked = SettingsWrapper.ReconnectAtLaunch
@@ -71,6 +75,7 @@ namespace AudioSink
             reconnectToggleMenu.Click += this.ReconnectToggleMenu_Click;
             reconnectIntervalToggleMenu.Click += this.ReconnectIntervalToggleMenu_Click;
             exitMenu.Click += this.ExitMenu_Click;
+            autoStartMenu.Click += this.AutoStartMenu_Click;
 
             // Populate the initial menu.
             PopulateMenu(Program.Watcher);
@@ -80,6 +85,12 @@ namespace AudioSink
 
             this.reconnectTimer.Tick += this.ReconnectTimer_Tick;
             this.reconnectTimer.Enabled = SettingsWrapper.ReconnectOnInterval;
+        }
+
+        private void AutoStartMenu_Click(object sender, EventArgs e)
+        {
+            AutoStartManager.IsAutoStartEnabled = !AutoStartManager.IsAutoStartEnabled;
+            autoStartMenu.Checked = AutoStartManager.IsAutoStartEnabled;
         }
 
         /// <summary>
@@ -182,6 +193,7 @@ namespace AudioSink
                 menu.Items.Add(new ToolStripSeparator());
                 menu.Items.Add(reconnectToggleMenu);
                 menu.Items.Add(reconnectIntervalToggleMenu);
+                menu.Items.Add(autoStartMenu);
                 menu.Items.Add(new ToolStripSeparator());
                 menu.Items.Add(exitMenu);
             }
