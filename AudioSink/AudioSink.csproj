@@ -5,6 +5,7 @@
     <TargetFramework>net481</TargetFramework>
     <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
     <ApplicationIcon>Icons\icon.ico</ApplicationIcon>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
